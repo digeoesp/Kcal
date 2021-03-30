@@ -13,9 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# this file is what talks to the manage.py and the settings.py
+# i need to import the urls from my main_app.py
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include 
+#include will allow us to grab another urls file from another folder
+#whenever we hit that home route its going to hit urls pattern that is inside of the main app
+#
+#
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('main_app.urls'))
 ]
