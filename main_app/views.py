@@ -24,7 +24,7 @@ def contact(request):
 # Foods
 def food_index(request):
     food = Food.objects.all()
-    return render(request, 'food/index.html', { 'food': food})
+    return render(request, 'foods/index.html', { 'food': food}) # make sure foods is the same name as the folder
 
 # 1) Make a view function
 # 2) add the view to the urls.py inside main_app.urls file

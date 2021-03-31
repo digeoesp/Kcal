@@ -18,13 +18,13 @@ class Food(models.Model):
 
 class Profile(models.Model):
 	person_of = models.ForeignKey(User,null=True,on_delete=models.CASCADE)
-	calorie_count = models.FloatField(default=0,null=True,blank=True)
-	food_selected = models.ForeignKey(Food,on_delete=models.CASCADE,null=True,blank=True)
+	calorie_count = models.FloatField(default=0,null=True,blank=True) # counting calories for each day
+	food_selected = models.ForeignKey(Food,on_delete=models.CASCADE,null=True,blank=True) # food the user selects for consuming
 	quantity = models.FloatField(default=0)
 	total_calorie = models.FloatField(default=0,null=True)
 	date = models.DateField(auto_now_add = True)
-	calorie_goal = models.PositiveIntegerField(default=0)
-	all_food_selected_today = models.ManyToManyField(Food,through='PostFood',related_name='inventory')
+	calorie_goal = models.PositiveIntegerField(default=0) # setting a goal for calorie consumption for each day
+	all_food_selected_today = models.ManyToManyField(Food,through='PostFood',related_name='inventory') # stores all the food selected in a day
 
 	
 
