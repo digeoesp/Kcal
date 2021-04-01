@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-
 from datetime import date
+
+from django.urls import reverse
 
 # Create your models here.
 
@@ -11,6 +12,8 @@ class Food(models.Model):
 	quantity = models.PositiveIntegerField(null=False,default=0)
 	calorie = models.FloatField(null=False,default=0)
 	person_of = models.ForeignKey(User,null=True,on_delete=models.CASCADE)
+	#association with user. if you delete the user it will delete the foods associated with it
+	# user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return self.name

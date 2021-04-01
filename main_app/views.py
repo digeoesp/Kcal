@@ -11,6 +11,7 @@ from .models import Food, Profile
 
 
 
+
 # Create your views here.
 # controller but called views in django
 # set them up like functions
@@ -67,6 +68,9 @@ def sign_up(request):
   })
 
 
+def loginPage(request):
+    context = {}
+    return render(request, 'registration/login.html', context)
 # 1) Make a view function
 # 2) add the view to the urls.py inside main_app.urls file
 # 3) Create functions for html files
