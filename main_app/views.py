@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse # need this to send a response to the user
-
+from django.contrib.auth import login
 # imports
 from .models import Food
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 # controller but called views in django
 # set them up like functions
@@ -26,6 +26,9 @@ def food_index(request):
     food = Food.objects.all()
     return render(request, 'foods/index.html', { 'food': food}) # make sure foods is the same name as the folder
 
+def loginPage(request):
+    context = {}
+    return render(request, 'registration/login.html', context)
 # 1) Make a view function
 # 2) add the view to the urls.py inside main_app.urls file
 # 3) Create functions for html files
