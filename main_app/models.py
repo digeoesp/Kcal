@@ -51,7 +51,7 @@ class Profile(models.Model):
 		return str(self.person_of.username)
 
 
-class PostFood(models.Model):
+class PostFood(models.Model): # This model is used for a through connection with the
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
     food = models.ForeignKey(Food,on_delete=models.CASCADE)
     calorie_amount = models.FloatField(default=0,null=True,blank=True)
