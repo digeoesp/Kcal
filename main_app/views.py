@@ -1,8 +1,14 @@
-from django.shortcuts import render
-from django.http import HttpResponse # need this to send a response to the user
+from django.shortcuts import render, redirect
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+#  bring in decorator
+from django.contrib.auth.decorators import login_required # need this to send a response to the user
 
 # imports
-from .models import Food
+from .models import Food, Profile
+
 
 # Create your views here.
 # controller but called views in django
@@ -25,6 +31,29 @@ def contact(request):
 def food_index(request):
     food = Food.objects.all()
     return render(request, 'foods/index.html', { 'food': food}) # make sure foods is the same name as the folder
+# Foods
+def profile_index(request):
+    profile = Profile.objects.all()
+    return render(request, 'profiles/index.html', { 'profile': profile}) # make sure foods is the same name as the folder
+
+def sign_up(request):
+  error_message= ''
+  if request.method == 'POST':
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      user = form.save()
+      # ok user creare log thme in
+      login(request, user)
+      return redirect('index')
+    else: 
+      error_message='that was a no go, Invalid user'
+      #this will run after if its not  a piost or is=t was inva;iod
+  form = UserCreationForm()
+  return render(request, 'registration/signup.html', {
+    'form': form,
+    'error_message': error_message
+  })
+
 
 # 1) Make a view function
 # 2) add the view to the urls.py inside main_app.urls file
