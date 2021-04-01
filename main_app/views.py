@@ -5,9 +5,10 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 #  bring in decorator
 from django.contrib.auth.decorators import login_required # need this to send a response to the user
-
+from .forms import CreateUserForm, SelectFoodForm, AddFoodForm, ProfileForm
 # imports
 from .models import Food, Profile
+
 
 
 # Create your views here.
@@ -29,8 +30,19 @@ def contact(request):
 
 # Foods
 def food_index(request):
-    food = Food.objects.all()
-    return render(request, 'foods/index.html', { 'food': food}) # make sure foods is the same name as the folder
+    #for showing all food items available
+	form = AddFoodForm(request.POST) 
+	if request.method == 'POST':
+		form = AddFoodForm(request.POST)
+		if form.is_valid():
+			profile = form.save(commit=False)
+			profile.person_of = request.user
+			profile.save()
+			return redirect('add_food')
+	else:
+		form = AddFoodForm()
+		
+	return render(request,'foods/index.html') # make sure foods is the same name as the folder
 # Foods
 def profile_index(request):
     profile = Profile.objects.all()
