@@ -9,7 +9,5 @@ urlpatterns = [  # create a list to handle all the paths
     path('food/', views.food_index, name='food'),
     path('profile/', views.profile_index, name='profile' ),
     path('accounts/signup', views.sign_up, name='sign_up'),
-  
-
 
 ]
