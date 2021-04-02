@@ -10,8 +10,6 @@ from .forms import CreateUserForm, SelectFoodForm, AddFoodForm, ProfileForm
 from .models import Food, Profile
 
 
-
-
 # Create your views here.
 # controller but called views in django
 # set them up like functions
