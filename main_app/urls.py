@@ -10,5 +10,5 @@ urlpatterns = [  # create a list to handle all the paths
     path('profile/', views.profile_index, name='profile' ),
     path('accounts/signup', views.sign_up, name='sign_up'),
     path('resources', views.resources, name='resources'),
-    path('shop', views.resources, name='shop'),
+    path('shop', views.shop, name='shop'),
 ]
