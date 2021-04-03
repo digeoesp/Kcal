@@ -72,6 +72,9 @@ def loginPage(request):
 
 def resources(request):
     return render(request, 'resources.html')
+
+def resources(request):
+    return render(request, 'shop.html')
 # 1) Make a view function
 # 2) add the view to the urls.py inside main_app.urls file
 # 3) Create functions for html files
