@@ -126,7 +126,6 @@ def select_food(request):
 			return redirect('home')
 	else:
 		form = SelectFoodForm(request.user)
-
 	context = {'form':form,'food_items':food_items}
 	return render(request, 'select_food.html',context)
 
@@ -178,6 +177,7 @@ def delete_food(request,pk):
 		return redirect('profile')
 	context = {'food':food_item,}
 	return render(request,'delete_food.html',context)
+
 
 def resources(request):
 
