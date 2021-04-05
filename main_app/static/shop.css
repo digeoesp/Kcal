@@ -52,7 +52,46 @@ body {
     color: #cda45e;
     font-family: "Poppins", sans-serif;
     text-shadow: 3px 3px 5px rgb(214, 205, 205);
-    text-align: center;
+    text-align: left;
     -webkit-text-stroke-width: .7px;
     -webkit-text-stroke-color: black;
+    padding-bottom: 40px;
 }
+
+/* ferdsg */
+
+  
+  .section-title h2 {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0;
+    line-height: 1px;
+    margin-left: 110px;
+    margin-bottom: .01px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .section-title h2::after {
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 4px 10px;
+  }
+  
+  .section-title p {
+    margin: 0;
+    margin: 0;
+    font-size: 40px;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    color: #cda45e;
+    text-align: center;
+  }
+  #underline {
+      color: transparent;
+  }
