@@ -1,6 +1,12 @@
+
 {% extends 'base.html' %}
 
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+
 {% block content %}
+
 <h1 id="username" class="text-center mt-4 headline">Hi {{ request.user }}</h1>
 
 
