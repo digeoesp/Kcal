@@ -1,0 +1,11 @@
+#username {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #cda45e;
+    font-family: "Poppins", sans-serif;
+    text-shadow: 3px 3px 5px rgb(214, 205, 205);
+    text-align: center;
+    -webkit-text-stroke-width: .7px;
+    -webkit-text-stroke-color: black;
+}
