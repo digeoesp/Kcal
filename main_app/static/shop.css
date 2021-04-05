@@ -27,6 +27,7 @@ body {
     width: 320px;
     margin-left: 20px;
     border-radius: 5px;
+    text-align: left;
     background-color: rgba(255, 255, 255, 0.5);
 }
 .card:hover {
@@ -34,8 +35,10 @@ body {
   }
 .container {
     padding: 2px 16px;
+    
 }
 #cardImage {
       max-width: 50%;
       border-radius: 5px 5px 0 0;
 }
+

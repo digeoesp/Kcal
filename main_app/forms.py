@@ -29,3 +29,4 @@ class ProfileForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ('calorie_goal',)
+
