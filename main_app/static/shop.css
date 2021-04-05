@@ -18,7 +18,7 @@ body {
     
 }
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 8px 8px 8px gray;
     transition: 0.3s;
     display: inline-flex;
     flex-wrap: wrap;
@@ -32,10 +32,11 @@ body {
     background-color: rgba(255, 255, 255, 0.5);
 }
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 8px 8px 8px #cda45e;
 }
 .container {
     padding: 2px 16px;
+    ;
     
 }
 #cardImage {
@@ -43,3 +44,14 @@ body {
       border-radius: 5px 5px 0 0;
 }
 
+.section-title {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #cda45e;
+    font-family: "Poppins", sans-serif;
+    text-shadow: 3px 3px 5px rgb(214, 205, 205);
+    text-align: center;
+    -webkit-text-stroke-width: .7px;
+    -webkit-text-stroke-color: black;
+}
