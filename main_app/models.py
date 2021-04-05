@@ -5,7 +5,8 @@ from django.urls import reverse
 
 
 # Create your models here.
-
+# This model is made for storing all the food items that the user wants in 
+# their profile. Each user is connected so that users can have food inventory of their own choice.
 
 class Food(models.Model):
 	name = models.CharField(max_length=200 ,null=False)
