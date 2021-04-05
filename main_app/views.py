@@ -66,7 +66,6 @@ def sign_up(request):
   })
 
 
-
 def loginPage(request):
     context = {}
     return render(request, 'registration/login.html', context)
