@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 id="username" class="text-center mt-4 headline">Hi {{ request.user }}<sub><a href="{% url "logout" %}">(Logout)</a></sub></h1>
+<h1 id="username" class="text-center mt-4 headline">Hi {{ request.user }}</h1>
 
 
 <div class="container mt-2">
@@ -22,7 +22,7 @@
   
 </div>
   
-      <div class="card text-white text-center mt-4"  style="border-radius: 20px;">
+      <div class="card text-black text-center mt-4"  style="border-radius: 20px;">
 
         <div class="card-body">
           

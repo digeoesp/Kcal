@@ -15,7 +15,7 @@
 
 </head>
 <body>
-  <a href={% url "home" %}><h1 class="logo text-center">Kcal</h1></a>
+
   
 <nav id="navbar-primary" class="navbar navbar-expand-lg navbar-default active" role="navigation">
   
@@ -32,10 +32,13 @@
             <div class="collapse navbar-collapse" id="resNav">
             <ul class="navbar-nav justify-content-center">
               {% with url_name=request.resolver_match.url_name %}
-              <li class="nav-item"><a class="nav-link {% if url_name == 'profile' %} active{% endif %}" href={% url "profile" %}>Profile</a></li>
               <li class="nav-item"><a class="nav-link  {% if url_name == 'home' %} active{% endif %}" href={% url "home" %}>Home</a></li>
+              <li class="nav-item"><a class="nav-link {% if url_name == 'profile' %} active{% endif %}" href={% url "profile" %}>Profile</a></li>
               <li class="nav-item"><a class="nav-link {% if url_name == 'add_food' %} active{% endif %}" href={% url "add_food" %}>Add Food</a></li>
               <li class="nav-item"><a class="nav-link {% if url_name == 'select_food' %} active{% endif %}" href={% url "select_food" %}>Select Food</a></li>
+              <li class="nav-item"><a class="" href={% url "resources" %}>Resources</a></li>
+              <li class="nav-item"><a class="" href={% url "shop" %}>Shop</a></li>
+              <li><sub><a href="{% url "logout" %}">Logout</a></sub></li>
               {% endwith %}
             </ul>
             </div>
