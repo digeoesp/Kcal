@@ -21,6 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'v@s153&@q&5nornc_hjr8&g)7uq519v_q2(b8jwh)hp7^td0m@'
+
 GOOGLE_RECAPTCHA_SECRET_KEY = '6Ld86JwaAAAAAMmZqGFGC42RWOfYwmtYBU0Czrpm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -39,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-   
+
 ]
 
 MIDDLEWARE = [
@@ -123,4 +124,7 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL='/food/'
 LOGOUT_REDIRECT_URL='/'
+
+# RECAPTCHA_PUBLIC_KEY = '6Ld86JwaAAAAAAsBHi70KsddZdjRpXxr6JvPX8-V'
+# RECAPTCHA_PRIVATE_KEY = '6Ld86JwaAAAAAMmZqGFGC42RWOfYwmtYBU0Czrpm'
 

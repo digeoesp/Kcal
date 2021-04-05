@@ -11,12 +11,15 @@
     <form method='post' action='{% url "sign_up" %}'>
         {% csrf_token %}
         {{ form.as_p }}
+
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+        <div class="g-recaptcha" data-sitekey="6Ld86JwaAAAAAAsBHi70KsddZdjRpXxr6JvPX8-V"></div>
+
         <input type="submit" class="btn" value="Signup">
         <input type="hidden" name="next" value="{{ next }}">
 
-        <br>
-        <script src='https://www.google.com/recaptcha/api.js'></script>
-        <div class="g-recaptcha" data-sitekey="6Ld86JwaAAAAAAsBHi70KsddZdjRpXxr6JvPX8-V"></div>
+
+
     </form>
 </body>
 </html>
