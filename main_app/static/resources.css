@@ -45,7 +45,11 @@ body {
     border-color: black;
     text-shadow: 3px 3px 5px gray;
     font-family: "Poppins", sans-serif;
+    box-shadow: 8px 8px 8px gray;
+}
 
+.card:hover {
+    box-shadow: 8px 8px 8px #cda45e;
 }
 
 .container {
