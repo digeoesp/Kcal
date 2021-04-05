@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .forms import CreateUserForm, SelectFoodForm, AddFoodForm, ProfileForm
-from .models import Food, Profile, PostFood
+from .models import *
 from django.contrib.auth.decorators import login_required # need this to send a response to the user
 from datetime import timedelta
 from django.utils import timezone
@@ -54,39 +54,40 @@ def contact(request):
     return render(request, 'contact.html')
 
 def Home(request):
-  #taking the latest profile object
-	# calories = Profile.objects.filter(person_of=request.user).last()
-	# calorie_goal = calories.calorie_goal
+  # taking the latest profile object
+	calories = Profile.objects.filter(person_of=request.user).last()
+	calorie_goal = calories.calorie_goal
 	
-	# #creating one profile each day
-	# if date.today() > calories.date:
-	# 	profile=Profile.objects.create(person_of=request.user)
-	# 	profile.save()
+	#creating one profile each day
+	if date.today() > calories.date:
+		profile=Profile.objects.create(person_of=request.user)
+		profile.save()
 
-	# calories = Profile.objects.filter(person_of=request.user).last()
+	calories = Profile.objects.filter(person_of=request.user).last()
 		
-	# # showing all food consumed present day
+	# showing all food consumed present day
 
-	# all_food_today=PostFood.objects.filter(profile=calories)
+	all_food_today=PostFood.objects.filter(profile=calories)
 	
-	# calorie_goal_status = calorie_goal -calories.total_calorie
-	# over_calorie = 0
-	# if calorie_goal_status < 0 :
-	# 	over_calorie = abs(calorie_goal_status)
+	calorie_goal_status = calorie_goal -calories.total_calorie
+	over_calorie = 0
+	if calorie_goal_status < 0 :
+		over_calorie = abs(calorie_goal_status)
 
-	# context = {
-	# 'total_calorie':calories.total_calorie,
-	# 'calorie_goal':calorie_goal,
-	# 'calorie_goal_status':calorie_goal_status,
-	# 'over_calorie' : over_calorie,
-	# 'food_selected_today':all_food_today
-	# }
+	context = {
+	'total_calorie':calories.total_calorie,
+	'calorie_goal':calorie_goal,
+	'calorie_goal_status':calorie_goal_status,
+	'over_calorie' : over_calorie,
+	'food_selected_today':all_food_today
+	}
 	
 
-	return render(request, 'home.html') #,context
+	return render(request, 'home.html',context) #,context
 	
 	
 # Foods
+@login_required
 def add_food(request):
 	
 
@@ -129,9 +130,8 @@ def select_food(request):
 	context = {'form':form,'food_items':food_items}
 	return render(request, 'select_food.html',context)
 
+@login_required
 def ProfilePage(request):
-
-
 	#getting the lastest profile object for the user
 	person = Profile.objects.filter(person_of=request.user).last()
 	food_items = Food.objects.filter(person_of=request.user)
@@ -141,7 +141,7 @@ def ProfilePage(request):
 		form = ProfileForm(request.POST,instance=person)
 		if form.is_valid():	
 			form.save()
-			return redirect('profile')
+			return redirect('home')
 	else:
 		form = ProfileForm(instance=person)
 
@@ -151,6 +151,8 @@ def ProfilePage(request):
 
 	context = {'form':form,'food_items':food_items,'records':records}
 	return render(request, 'profile.html',context)
+
+
 
 def update_food(request,pk):
 	food_items = Food.objects.filter(person_of=request.user)
