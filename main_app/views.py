@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required # need this to send a 
 from .forms import CreateUserForm, SelectFoodForm, AddFoodForm, ProfileForm
 # imports
 from .models import Food, Profile
+from .filters import FoodFilter
 
 
 # Create your views here.
@@ -30,6 +31,7 @@ def contact(request):
 # Foods
 def food_index(request):
     #for showing all food items available
+	food_items = Food.objects.filter(person_of=request.user)
 	form = AddFoodForm(request.POST) 
 	if request.method == 'POST':
 		form = AddFoodForm(request.POST)
@@ -40,8 +42,12 @@ def food_index(request):
 			return redirect('add_food')
 	else:
 		form = AddFoodForm()
-		
-	return render(request,'foods/index.html') # make sure foods is the same name as the folder
+	#for filtering food
+	myFilter = FoodFilter(request.GET,queryset=food_items)
+	food_items = myFilter.qs
+	context = {'form':form,'food_items':food_items,'myFilter':myFilter}
+	return render(request,'foods/index.html',context)
+ # make sure foods is the same name as the folder
 # Foods
 def profile_index(request):
     profile = Profile.objects.all()
