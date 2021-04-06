@@ -116,6 +116,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar {
   padding: 0;
+
 }
 
 .navbar ul {
@@ -131,7 +132,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: space-between;
   padding: 10px 0 10px 30px;
-  color: black;
+  color: white;
   white-space: nowrap;
   transition: 0.3s;
   font-size: 14px;

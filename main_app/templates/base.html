@@ -30,19 +30,21 @@
           </button>
         </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="resNav">
-            <ul class="navbar-nav justify-content-center">
-              {% with url_name=request.resolver_match.url_name %}
-              <li class="nav-item"><a class="nav-link  {% if url_name == 'home' %} active{% endif %}" href={% url "home" %}>Home</a></li>
-              <li class="nav-item"><a class="nav-link {% if url_name == 'profile' %} active{% endif %}" href={% url "profile" %}>Profile</a></li>
-              <li class="nav-item"><a class="nav-link {% if url_name == 'add_food' %} active{% endif %}" href={% url "add_food" %}>Add Food</a></li>
-              <li class="nav-item"><a class="nav-link {% if url_name == 'select_food' %} active{% endif %}" href={% url "select_food" %}>Select Food</a></li>
-              <li class="nav-item"><a class="nav-link" href={% url "resources" %}>Resources</a></li>
-              <li class="nav-item"><a class="nav-link" href={% url "shop" %}>Shop</a></li>
-              <li class="nav-item"><a class="nav-link" href="{% url "logout" %}">Logout</a></li>
-              {% endwith %}
-            </ul>
-            </div>
+            <header id="header" class="fixed-top d-flex align-items-center">
+              <div class="collapse navbar-collapse" id="resNav">
+                  <ul class="navbar-nav justify-content-center">
+                    {% with url_name=request.resolver_match.url_name %}
+                    <li class="nav-item"><a class="nav-link  {% if url_name == 'home' %} active{% endif %}" href={% url "home" %}>Home</a></li>
+                    <li class="nav-item"><a class="nav-link {% if url_name == 'profile' %} active{% endif %}" href={% url "profile" %}>Profile</a></li>
+                    <li class="nav-item"><a class="nav-link {% if url_name == 'add_food' %} active{% endif %}" href={% url "add_food" %}>Add Food</a></li>
+                    <li class="nav-item"><a class="nav-link {% if url_name == 'select_food' %} active{% endif %}" href={% url "select_food" %}>Select Food</a></li>
+                    <li class="nav-item"><a class="nav-link" href={% url "resources" %}>Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href={% url "shop" %}>Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url "logout" %}">Logout</a></li>
+                    {% endwith %}
+                  </ul>
+                  </div>
+          </header>
             <!-- /.navbar-collapse -->
       
  </div>

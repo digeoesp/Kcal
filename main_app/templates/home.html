@@ -7,20 +7,20 @@
 
 {% block content %}
 
-<h1 id="username" class="text-center mt-4 headline">Hi {{ request.user }}</h1>
+<h1 class="username" class="text-center mt-4 headline">Hi {{ request.user }}</h1>
 
 
 <div class="container mt-2">
   <div class="row">
     <div class="col-lg-6 col-sm-12 item ">
       <div class="card item-card card-block">
-        <h5 class="card-title mt-3 mb-3 text-center">Total Calories Consumed Today</h5>
+        <h5 class="card-title mt-3 mb-3 text-center"><u>Total Calories Consumed Today</u></h5>
         <p class="card-text text-center">{{ total_calorie }}</p> 
     </div>
     </div>
     <div class="col-lg-6 col-sm-12 item">
       <div class="card item-card card-block mt-sm-2 mt-lg-0">
-        <h5 class="card-title  mt-3 mb-3 text-center">Calorie Goal For Today</h5>
+        <h5 class="card-title  mt-3 mb-3 text-center"><u>Calorie Goal For Today</u></h5>
         <p class="card-text text-center">{{ calorie_goal }}</p> 
   </div>
     </div>
@@ -28,13 +28,14 @@
   
 </div>
   
-      <div class="card text-black text-center mt-4"  style="border-radius: 20px;">
+      <div class="card text-black text-center mt-4"  style="border-radius: 10px;">
 
         <div class="card-body">
           
-          <p class="card-text text-center pt-3" style="font-size:22px"> 
+          <p class="card-text text-center pt-3" style=> 
           {% if calorie_goal_status > 0 %}
-          You need  {{ calorie_goal_status }} calories more to reach your goal 
+          <h1 id="youNeed">You need <span id="calories">{{ calorie_goal_status }}</span> calories more to reach your goal </h1>
+             
           {% elif calorie_goal == 0 %}
             <a href="{% url "profile" %}"> Enter your calorie goal for the day </a>
             {% else %}
@@ -46,7 +47,7 @@
 
       </div>
 
-<h1 class="headline text-center mt-auto mb-auto">All Food Consumed Today </h1>
+<h1 class="username" class="headline text-center mt-auto mb-auto">All Food Consumed Today </h1>
 <div class="container table-responsive py-5"> 
 <table class="table table-bordered table-hover">
   <thead class="thead-dark">
