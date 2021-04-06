@@ -34,7 +34,7 @@
           
           <p class="card-text text-center pt-3" style=> 
           {% if calorie_goal_status > 0 %}
-          <h1 id="youNeed">You need <span id="calories">{{ calorie_goal_status }}</span> calories more to reach your goal </h1>
+          <h1 id="youNeed">You have <span id="calories">{{ calorie_goal_status }}</span> calories left for today </h1>
              
           {% elif calorie_goal == 0 %}
             <a href="{% url "profile" %}"> Enter your calorie goal for the day </a>

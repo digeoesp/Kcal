@@ -2,6 +2,8 @@ body {
   font-family: "Open Sans", sans-serif;
   background: #0c0b09;
   color: #fff;
+  display: flex;
+  flex-direction:column;
 }
 
 a {
@@ -116,7 +118,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar {
   padding: 0;
+}
 
+.navbar-container {
+  width: 100%;
 }
 
 .navbar ul {
@@ -125,6 +130,8 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   list-style: none;
   align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
 }
 
 .navbar a {
@@ -179,4 +186,3 @@ h1, h2, h3, h4, h5, h6 {
   top: 100%;
   visibility: visible;
 }
-

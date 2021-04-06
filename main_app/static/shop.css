@@ -6,7 +6,6 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    position: relative;
     padding: 0;
 }
 
@@ -29,7 +28,7 @@ body {
     margin-left: 20px;
     border-radius: 5px;
     text-align: left;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     margin-bottom: 10px;
 }
 .card:hover {
@@ -37,7 +36,6 @@ body {
 }
 .container {
     padding: 2px 16px;
-    ;
     
 }
 #cardImage {
@@ -94,4 +92,13 @@ body {
   }
   #underline {
       color: transparent;
+  }
+  .cardheader {
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    color: #cda45e;
+    text-align: center;
+    text-shadow: 3px 3px 5px gray;
+    margin-left: auto;
+    margin-right: auto
   }

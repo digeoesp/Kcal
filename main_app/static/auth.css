@@ -5,7 +5,6 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    position: relative;
     padding: 0;
 }
 body:before {
@@ -28,12 +27,13 @@ body:before {
     justify-content: center;
     flex-direction: column;
     padding: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 8px 8px 12px rgb(119, 115, 115);
     border-radius: 5px;
 }
 
 .form_container {
     margin-top: 20px;
+    
 }
 
 #form-title {
@@ -71,6 +71,7 @@ body:before {
 }
 
 .d-flex {
-    color: wheat;
+    color: #cda45e;
     text-shadow: 3px 3px 5px gray;
+    font-size: 13px;
 }

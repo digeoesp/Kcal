@@ -1,4 +1,7 @@
+{% extends 'base.html' %}
+
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,10 +9,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health Resources</title>
+
     <link rel="stylesheet" type="text/css" href="{% static 'resources.css' %}">
+
+
 </head>
 
 <body >
+
     <!-- <h1>Additional Resources</h1> -->
     <div class="navbar-header">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -35,80 +42,101 @@
 
  <div class="section-title position-relative text-center ">
                 <h1>Check out these health resources</h1>
-        </div>
+        
 
 
     <!-- STOP -->
     <div id="allCards">
 
+
+        <div class="allContainer position-relative text-center">
+            <div class="card">
+                <h4 class = "cardheader">Calories for Common Foods</h4>
+                <a href="https://www.calories.info/food/fruits"
+                target="_blank">
+                <img id="cardImage" src='https://res.cloudinary.com/dvzw25pxu/image/upload/v1617688341/cals1_abfayy.jpg' alt="BMI Chart for Adults"
+                    style="max-width:100%">
+                    </a>
+                <div class="container">
+                    <h6 class = "cardheader"></h6>
+                </div>
+            </div>
+        </div>
+    
+    
+        <div class="allContainer position-relative text-center">
+            <div class="card">
+                <h4 class = "cardheader">Calories for Common Foods</h4>
+                <a href="https://www.calories.info/"
+                target="_blank">
+                <img id="cardImage" src='https://res.cloudinary.com/dvzw25pxu/image/upload/v1617688416/cals2_aysayu.jpg' alt="BMI Chart for Adults"
+                    style="max-width:100%">
+                    </a>
+                <div class="container">
+                    <h6 class = "cardheader"></h6>
+                </div>
+            </div>
+        </div>
+
+
     <div class="allContainer position-relative text-center">
         <div class="card">
-            <h4>Estimated Calorie Needs per Day by Age, Gender, and Physical Activity Level.</h4>
+            <h4 class = "cardheader"><b>Estimated Calorie Needs per Day by Age, Gender, and Physical Activity Level.</b></h4>
             <img id="cardImage" src='https://res.cloudinary.com/dvzw25pxu/image/upload/v1617419749/Screen_Shot_2021-04-02_at_8.15.18_PM_iqyfkp.png' alt="Avatar"
                 style="max-width:100%">
             <div class="container">
-                <p>Estimated amounts of calories as needed to maintain calorie balance for various gender and age groups at three different
-                    levels of physical activity. The estimates are rounded to the nearest 200 calories for assignment to a USDA Food Pattern.
-                    An individual’s calorie needs may be higher or lower than these average estimates.</p>
+                <h6 class = "cardheader"></h6>
             </div>
         </div>
     </div>
 
-    <div class="allContainer">
+    <div class="allContainer position-relative text-center">
         <div class="card">
-            <h4>Body Mass Index (BMI) Chart for Adults</h4>
+            <h4 class = "cardheader">Body Mass Index (BMI) Chart for Adults</h4>
+            <a href="https://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmi_tbl.htm"
+            target="_blank">
             <img id="cardImage" src='https://res.cloudinary.com/dvzw25pxu/image/upload/v1617420368/BMI2_r4yyc3.jpg' alt="BMI Chart for Adults"
                 style="max-width:100%">
+                </a>
             <div class="container">
-                <p></p>
+                <h6 class = "cardheader"></h6>
             </div>
         </div>
     </div>
 
 
-    <div class="allContainer">
+    <div class="allContainer position-relative text-center">
         <div class="card">
-            <h4>Body Mass Index (BMI) Chart for Adults</h4>
-            <img id="cardImage" src='https://res.cloudinary.com/dvzw25pxu/image/upload/v1617420368/BMI2_r4yyc3.jpg' alt="BMI Chart for Adults"
+            <h4 class = "cardheader">MyPlate - What’s on your plate?</h4>
+            <a href="https://www.myplate.gov/form/myplate-quiz#question_1"
+            target="_blank">
+            <img id="cardImage" src='https://res.cloudinary.com/dvzw25pxu/image/upload/v1617679698/myplate_xxhlrv.jpg' alt="MyPlate"
                 style="max-width:100%">
+                </a>
             <div class="container">
-                <p></p>
+                <h6 class = "cardheader">Are you making every bite count? Take the quiz to find out and get personalized resources to Start Simple with MyPlate.</h6>
             </div>
         </div>
     </div>
 
-    <div class="allContainer">
+
+    <div class="allContainer position-relative text-center">
         <div class="card">
-            <h4>Body Mass Index (BMI) Chart for Adults</h4>
-            <img id="cardImage" src='https://res.cloudinary.com/dvzw25pxu/image/upload/v1617420368/BMI2_r4yyc3.jpg' alt="BMI Chart for Adults"
+            <h4 class = "cardheader">MyPlate - Recipes</h4>
+            <a href="https://www.myplate.gov/myplate-kitchen/recipes"
+            target="_blank">
+            <img id="cardImage" src='https://res.cloudinary.com/dvzw25pxu/image/upload/v1617679698/myplate_xxhlrv.jpg' alt="MyPlate"
                 style="max-width:100%">
+                </a>
             <div class="container">
-                <p></p>
+                <h6 class = "cardheader">Healthy recipes ideas that the whole family will love.</h6>
             </div>
         </div>
     </div>
 
-    <div class="allContainer">
-        <div class="card">
-            <h4>Body Mass Index (BMI) Chart for Adults</h4>
-            <img id="cardImage" src='https://res.cloudinary.com/dvzw25pxu/image/upload/v1617420368/BMI2_r4yyc3.jpg' alt="BMI Chart for Adults"
-                style="max-width:100%">
-            <div class="container">
-                <p></p>
-            </div>
-        </div>
-    </div>
-
-    <div class="allContainer">
-        <div class="card">
-            <h4>Body Mass Index (BMI) Chart for Adults</h4>
-            <img id="cardImage" src='https://res.cloudinary.com/dvzw25pxu/image/upload/v1617420368/BMI2_r4yyc3.jpg' alt="BMI Chart for Adults"
-                style="max-width:100%">
-            <div class="container">
-                <p></p>
-            </div>
-        </div>
-    </div>
 
 </div>
+
 </body>
+</html>
+{% endblock content %}
