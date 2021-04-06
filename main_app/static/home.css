@@ -65,7 +65,7 @@ body {
 
 .btn {
     text-transform: uppercase;
-    /* box-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481); */
+    box-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
 }
 
 .addfood {
@@ -130,12 +130,19 @@ body {
 }
 .table {
     background-color: rgba(0, 0, 0, 0.6);
-    /* box-shadow: 8px 8px 8px gray; */
+    box-shadow: 8px 8px 8px gray;
+    border-top: solid;
+    border-bottom: solid;
+    border-right: solid;
+    border-left: solid;
+    border-color: white;
+    border-width: thin;
+
 }
 
 .card {
     background-color: rgba(0, 0, 0, 0.6);
-    /* box-shadow: 8px 8px 8px gray; */
+    box-shadow: 8px 8px 8px gray;
 }
 .card-body {
     background-color: rgba(0, 0, 0, 0.6);
@@ -143,7 +150,15 @@ body {
 .profgoal {
     background-color: rgba(0, 0, 0, 0.6);
     height: 160px;
-    /* box-shadow: 8px 8px 8px gray; */
+    box-shadow: 8px 8px 8px gray;
+    border-top: solid;
+    border-bottom: solid;
+    border-right: solid;
+    border-left: solid;
+    border-color: white;
+    border-width: thin;
+
+
 }
 .selectsearch {
     margin: 0;
@@ -170,6 +185,7 @@ body {
     -webkit-text-stroke-width: .7px;
     -webkit-text-stroke-color: black;
     text-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
+
 }
 .cal-today-num {
     font-size: 25px;
