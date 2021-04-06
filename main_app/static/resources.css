@@ -30,7 +30,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.6);
     border-color: black;
     text-shadow: 3px 3px 5px gray;
     font-family: "Poppins", sans-serif;
@@ -81,17 +81,16 @@ body {
 
 .cardheader {
     text-decoration: none;
-    /* font-family: "Poppins", sans-serif; */
-    color: black;
+    font-family: "Poppins", sans-serif;
+    color: #cda45e;
     text-align: center;
-    text-shadow: 3px 3px 5px gray;
+    text-shadow: 3px 3px 5px rgb(189, 187, 187);
     margin-left: auto;
     margin-right: auto
   }
 
 a {
     text-decoration: none;
-
     color: black;
     text-align: center;
     margin-left: auto;
