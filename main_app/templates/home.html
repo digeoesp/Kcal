@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 
 {% load static %}
@@ -15,61 +14,61 @@
     <div class="col-lg-6 col-sm-12 item ">
       <div class="profgoal item-card card-block">
         <h5 class="calorie-today mt-3 mb-3 text-center">Total Calories Consumed Today</h5>
-        <p class="cal-today-num text-center">{{ total_calorie }}</p> 
-    </div>
+        <p class="cal-today-num text-center">{{ total_calorie }}</p>
+      </div>
     </div>
     <div class="col-lg-6 col-sm-12 item">
       <div class="profgoal item-card card-block mt-sm-2 mt-lg-0">
         <h5 class="calorie-today  mt-3 mb-3 text-center">Calorie Goal For Today</h5>
-        <p class="cal-today-num text-center">{{ calorie_goal }}</p> 
-  </div>
+        <p class="cal-today-num text-center">{{ calorie_goal }}</p>
+      </div>
     </div>
   </div>
-  
+
 </div>
-  <br>
-      <div class="profgoal text-center mt-4"  style="border-radius: 10px;">
+<br>
+<div class="profgoal text-center mt-4" style="border-radius: 10px;">
 
-        <div >
-          
-          <p class="card-text text-center pt-3" style=> 
-          {% if calorie_goal_status > 0 %}
-          <h1 id="youNeed">You have <span id="calories">{{ calorie_goal_status }}</span> calories left for today </h1>
-             
-          {% elif calorie_goal == 0 %}
-            <a href="{% url "profile" %}"> Enter your calorie goal for the day </a>
-            {% else %}
-            You surpassed your goal by {{ over_calorie }} calories 
-            {% endif %} 
-          </p>
+  <div>
 
-        </div>
+    <p class="card-text text-center pt-3" style=>
+      {% if calorie_goal_status > 0 %}
+    <h1 id="youNeed">You have <span id="calories">{{ calorie_goal_status }}</span> calories left for today </h1>
 
-      </div>
+    {% elif calorie_goal == 0 %}
+    <a href="{% url " profile" %}"> Enter your calorie goal for the day </a>
+    {% else %}
+    You surpassed your goal by {{ over_calorie }} calories
+    {% endif %}
+    </p>
+    <br>
+  </div>
+
+</div>
 <br>
 <br>
 <h1 class="username" class="headline text-center mt-auto mb-auto">All Food Consumed Today </h1>
-<div class="container  py-5"> 
-<table class="table table-bordered table-hover">
-  <thead class="thead-dark">
-    <tr class="text-center">
-      <th class="card-title" scope="col">Food</th>
-      <th class="card-title" scope="col">Calorie</th>
-      <th class="card-title" scope="col">Count</th>
-    </tr>
-  </thead>
-  <tbody>
- 
-  
-    {% for food in food_selected_today %}
-    <tr class="text-center">
-      <td class="food-name"> {{ food.food.name }}</td>
-      <td class="add-food"> {{ food.calorie_amount }}</td>
-      <td class="add-food"> {{ food.amount }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<div class="container  py-5">
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr class="text-center">
+        <th class="card-title" scope="col">Food</th>
+        <th class="card-title" scope="col">Calorie</th>
+        <th class="card-title" scope="col">Count</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+      {% for food in food_selected_today %}
+      <tr class="text-center">
+        <td class="food-name"> {{ food.food.name }}</td>
+        <td class="add-food"> {{ food.calorie_amount }}</td>
+        <td class="add-food"> {{ food.amount }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 
 
