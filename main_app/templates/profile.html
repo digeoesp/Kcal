@@ -4,25 +4,25 @@
 <br>
 <div class="container-fluid">
     <div class="app-title">
-                
+
         <h1 class="username" class="text-center profile-text mt-2">Your Profile: {{ request.user }} </h1>
 
     </div>
-        <div class="row mt-4 mb-4">
-            <div class="col-lg-5 card card-body">
+    <div class="row mt-4 mb-4">
+        <div class="profgoal" class="col-lg-5 card card-body">
 
 
             <form method="POST" action="" class="login-form pt-4">
-              {% csrf_token %}
+                {% csrf_token %}
                 {% for field in form %}
                 <h1 class="card-title text-center">Calorie Goal For Today</h1>
                 <div class="field text-center">{{ field }}
-                {% endfor %}
-                <input class="btn btn-sm btn-info" "  type="submit" value="select">
-            </div>
+                    {% endfor %}
+                    <input class="btn btn-sm btn-info" "  type=" submit" value="select">
+                </div>
             </form>
         </div>
-     
+
         <!-- <div class="col-lg-7">
         <h1 class="text-center headline pb-2">Records From Past Week</h1>
         <table class="table text-center">
@@ -44,16 +44,17 @@
                 {% endfor %}
             </tbody>
         </table>  
-    </div>
+   
      
    
      </div> -->
 
+    </div>
     <h1 id="all-food" class="text-center headline">All Food Items </h1>
 
-     <div class="row mt-5">
-      <table class="table text-center">
-            <thead class="thead-dark">
+    <div class="row mt-5">
+        <table class="table text-center">
+            <thead>
                 <tr>
                     <th class="card-title" scope="col">Food Name</th>
                     <th class="card-title" scope="col">Calories</th>
@@ -65,17 +66,17 @@
             <tbody>
                 {% for food in food_items %}
                 <tr>
-                    <td>{{ food.name }}</td>
-                    <td>{{ food.calorie }}</td>
-                    <td>{{ food.quantity }}</td>
+                    <td class="food-name">{{ food.name }}</td>
+                    <td class="add-food">{{ food.calorie }}</td>
+                    <td class="add-food">{{ food.quantity }}</td>
                     <td><a class="btn btn-sm btn-info" href="{% url 'update_food' food.id %}">Update</a></td>
                     <td><a class="btn btn-sm btn-info" href="{% url 'delete_food' food.id %}">Delete</a></td>
 
-                    
+
                 </tr>
                 {% endfor %}
             </tbody>
-        </table>  
+        </table>
     </div>
 </div>
 {% endblock content %}

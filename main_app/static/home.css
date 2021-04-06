@@ -34,6 +34,8 @@ body {
 
 #calories {
     color: red;
+    -webkit-text-stroke-width: .8px;
+    -webkit-text-stroke-color: black;
 }
 
 .card-title {
@@ -45,7 +47,7 @@ body {
     font-family: "Poppins", sans-serif;
     -webkit-text-stroke-width: .7px;
     -webkit-text-stroke-color: black;
-    text-shadow: 3px 3px 5px rgb(214, 205, 205);
+    text-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
 }
 
 #all-food {
@@ -63,4 +65,120 @@ body {
 
 .btn {
     text-transform: uppercase;
+    box-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
+}
+
+.addfood {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #cda45e;
+    font-family: "Poppins", sans-serif;
+    text-shadow: 3px 3px 5px rgba(214, 205, 205);
+    -webkit-text-stroke-width: .7px;
+    -webkit-text-stroke-color: black;
+
+}
+.addright {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #cda45e;
+    font-family: "Poppins", sans-serif;
+    text-shadow: 3px 3px 5px rgb(214, 205, 205);
+    -webkit-text-stroke-width: .7px;
+    -webkit-text-stroke-color: black;
+    text-align: center;
+}
+.addsearch {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #cda45e;
+    font-family: "Poppins", sans-serif;
+    text-shadow: 3px 3px 5px rgb(214, 205, 205);
+    -webkit-text-stroke-width: .7px;
+    -webkit-text-stroke-color: black;
+    text-align: center;
+    margin-bottom: 8px;
+}
+.food-name {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #cda45e;
+    font-family: "Poppins", sans-serif;
+    text-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
+    -webkit-text-stroke-width: .7px;
+    -webkit-text-stroke-color: black;
+    text-align: center;
+}
+.add-food {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 56px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    text-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
+    -webkit-text-stroke-width: .7px;
+    -webkit-text-stroke-color: black;
+    text-align: center;
+}
+#add-search {
+    text-align: center;
+
+}
+.table {
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 8px 8px 8px gray;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 8px 8px 8px gray;
+}
+.card-body {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.profgoal {
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 160px;
+    box-shadow: 8px 8px 8px gray;
+}
+.selectsearch {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #cda45e;
+    font-family: "Poppins", sans-serif;
+    -webkit-text-stroke-width: .7px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
+    text-align: center;
+}
+
+.calorie-today {
+    text-decoration: underline;
+    text-decoration-color: #cda45e;;
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #cda45e;
+    font-family: "Poppins", sans-serif;
+    -webkit-text-stroke-width: .7px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
+}
+.cal-today-num {
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 56px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    text-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
+    -webkit-text-stroke-width: .7px;
+    -webkit-text-stroke-color: black;
+    text-align: center;
 }
