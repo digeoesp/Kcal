@@ -36,7 +36,7 @@
     <h1 id="youNeed">You have <span id="calories">{{ calorie_goal_status }}</span> calories left for today </h1>
 
     {% elif calorie_goal == 0 %}
-    <a href="{% url " profile" %}"> Enter your calorie goal for the day </a>
+    <a href="{% url "profile" %}"> Enter your calorie goal for the day </a>
     {% else %}
     You surpassed your goal by {{ over_calorie }} calories
     {% endif %}
