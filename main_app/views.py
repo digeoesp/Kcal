@@ -1,16 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
-from .forms import CreateUserForm, SelectFoodForm, AddFoodForm, ProfileForm
+from django.contrib.auth.decorators import login_required
+from .forms import SelectFoodForm,AddFoodForm,CreateUserForm,ProfileForm
 from .models import *
-from django.contrib.auth.decorators import login_required # need this to send a response to the user
 from datetime import timedelta
 from django.utils import timezone
 from datetime import date
 from datetime import datetime
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth.forms import UserCreationForm
 from .filters import FoodFilter
 #pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
 # Create your views here.
@@ -19,8 +16,43 @@ from .filters import FoodFilter
 # create functions for template files
 # return render from our imports 
 # django will automatically look for a folder called templates
+# def index(request):
+#     return render(request, 'index.html')
 def index(request):
     return render(request, 'index.html')
+
+	
+@login_required(login_url='login')
+def HomePageView(request):
+
+	#taking the latest profile object
+	calories = Profile.objects.filter(person_of=request.user).last()
+	calorie_goal = calories.calorie_goal
+	
+	#creating one profile each day
+	if date.today() > calories.date:
+		profile=Profile.objects.create(person_of=request.user)
+		profile.save()
+	calories = Profile.objects.filter(person_of=request.user).last()
+	# showing all food consumed present day
+
+	all_food_today=PostFood.objects.filter(profile=calories)
+	
+	calorie_goal_status = calorie_goal -calories.total_calorie
+	over_calorie = 0
+	if calorie_goal_status < 0 :
+		over_calorie = abs(calorie_goal_status)
+
+	context = {
+	'total_calorie':calories.total_calorie,
+	'calorie_goal':calorie_goal,
+	'calorie_goal_status':calorie_goal_status,
+	'over_calorie' : over_calorie,
+	'food_selected_today':all_food_today
+	}
+	
+
+	return render(request, 'home.html',context)
 
 #signup page
 def RegisterPage(request):
@@ -39,6 +71,7 @@ def RegisterPage(request):
 		context = {'form':form}
 		return render(request,'register.html',context)
 
+#login page
 def LoginPage(request):
 	if request.user.is_authenticated:
 		return redirect('home')
@@ -59,88 +92,10 @@ def LoginPage(request):
 #logout page
 def LogOutPage(request):
 	logout(request)
-	return redirect('login')
+	return redirect('index')
 
-def sign_up(request):
-  error_message= ''
-  if request.method == 'POST':
-    form = UserCreationForm(request.POST)
-    if form.is_valid():
-      user = form.save()
-      # ok user creare log thme in
-      login(request, user)
-      return redirect('index')
-    else: 
-      error_message='that was a no go, Invalid user'
-      #this will run after if its not  a piost or is=t was inva;iod
-  form = UserCreationForm()
-  return render(request, 'registration/signup.html', {
-    'form': form,
-    'error_message': error_message
-  })
-
-def loginPage(request):
-    context = {}
-    return render(request, 'registration/login.html', context)
-
-
-@login_required(login_url='login')
-def HomePageView(request):
-  # taking the latest profile object
-	calories = Profile.objects.filter(person_of=request.user).last()
-	calorie_goal = calories.calorie_goal
-	
-	#creating one profile each day
-	if date.today() > calories.date:
-		profile=Profile.objects.create(person_of=request.user)
-		profile.save()
-
-	calories = Profile.objects.filter(person_of=request.user).last()
-		
-	# showing all food consumed present day
-
-	all_food_today=PostFood.objects.filter(profile=calories)
-	
-	calorie_goal_status = calorie_goal -calories.total_calorie
-	over_calorie = 0
-	if calorie_goal_status < 0 :
-		over_calorie = abs(calorie_goal_status)
-
-	context = {
-	'total_calorie':calories.total_calorie,
-	'calorie_goal':calorie_goal,
-	'calorie_goal_status':calorie_goal_status,
-	'over_calorie' : over_calorie,
-	'food_selected_today':all_food_today
-	}
-	
-
-	return render(request, 'home.html',context) #,context
-	
-	
-# Foods
+#for selecting food each day
 @login_required
-def add_food(request):
-    #for showing all food items available
-	food_items = Food.objects.filter(person_of=request.user)
-	form = AddFoodForm(request.POST) 
-	if request.method == 'POST':
-		form = AddFoodForm(request.POST)
-		if form.is_valid():
-			profile = form.save(commit=False)
-			profile.person_of = request.user
-			profile.save()
-			return redirect('add_food')
-	else:
-		form = AddFoodForm()
-	#for filtering food
-	myFilter = FoodFilter(request.GET,queryset=food_items)
-	food_items = myFilter.qs
-	context = {'form':form,'food_items':food_items,'myFilter':myFilter}
-	return render(request,'add_food.html',context)
- # make sure foods is the same name as the folder
-	
-
 def select_food(request):
 	person = Profile.objects.filter(person_of=request.user).last()
 	#for showing all food items available
@@ -155,34 +110,34 @@ def select_food(request):
 			return redirect('home')
 	else:
 		form = SelectFoodForm(request.user)
+
 	context = {'form':form,'food_items':food_items}
 	return render(request, 'select_food.html',context)
 
-@login_required
-def ProfilePage(request):
-	#getting the lastest profile object for the user
-	person = Profile.objects.filter(person_of=request.user).last()
+#for adding new food
+def add_food(request):
+	#for showing all food items available
 	food_items = Food.objects.filter(person_of=request.user)
-	form = ProfileForm(instance=person)
-
+	form = AddFoodForm(request.POST) 
 	if request.method == 'POST':
-		form = ProfileForm(request.POST,instance=person)
-		if form.is_valid():	
-			form.save()
-			return redirect('home')
+		form = AddFoodForm(request.POST)
+		if form.is_valid():
+			profile = form.save(commit=False)
+			profile.person_of = request.user
+			profile.save()
+			return redirect('add_food')
 	else:
-		form = ProfileForm(instance=person)
+		form = AddFoodForm()
+		
+	#for filtering food
+	myFilter = FoodFilter(request.GET,queryset=food_items)
+	food_items = myFilter.qs
+	context = {'form':form,'food_items':food_items,'myFilter':myFilter}
+	return render(request,'add_food.html',context)
 
-	#querying all records for the last seven days 
-	some_day_last_week = timezone.now().date() -timedelta(days=7)
-	records=Profile.objects.filter(date__gte=some_day_last_week,date__lt=timezone.now().date(),person_of=request.user)
-
-	context = {'form':form,'food_items':food_items,'records':records}
-	return render(request, 'profile.html',context)
-
-
+#for updating food given by the user
+@login_required
 def update_food(request,pk):
-
 	food_items = Food.objects.filter(person_of=request.user)
 
 	food_item = Food.objects.get(id=pk)
@@ -197,9 +152,9 @@ def update_food(request,pk):
 
 	return render(request,'add_food.html',context)
 
-
+#for deleting food given by the user
+@login_required
 def delete_food(request,pk):
-
 	food_item = Food.objects.get(id=pk)
 	if request.method == "POST":
 		food_item.delete()
@@ -207,6 +162,28 @@ def delete_food(request,pk):
 	context = {'food':food_item,}
 	return render(request,'delete_food.html',context)
 
+#profile page of user
+@login_required
+def ProfilePage(request):
+	#getting the lastest profile object for the user
+	person = Profile.objects.filter(person_of=request.user).last()
+	food_items = Food.objects.filter(person_of=request.user)
+	form = ProfileForm(instance=person)
+
+	if request.method == 'POST':
+		form = ProfileForm(request.POST,instance=person)
+		if form.is_valid():	
+			form.save()
+			return redirect('profile')
+	else:
+		form = ProfileForm(instance=person)
+
+	#querying all records for the last seven days 
+	some_day_last_week = timezone.now().date() -timedelta(days=7)
+	records=Profile.objects.filter(date__gte=some_day_last_week,date__lt=timezone.now().date(),person_of=request.user)
+
+	context = {'form':form,'food_items':food_items,'records':records}
+	return render(request, 'profile.html',context)
 
 def resources(request):
     return render(request, 'resources.html')
