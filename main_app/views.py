@@ -13,17 +13,53 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from .filters import FoodFilter
 #pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
-
 # Create your views here.
 # controller but called views in django
 # set them up like functions
 # create functions for template files
 # return render from our imports 
 # django will automatically look for a folder called templates
-#
-#
 def index(request):
     return render(request, 'index.html')
+
+#signup page
+def RegisterPage(request):
+	if request.user.is_authenticated:
+		return redirect('home')
+	else:
+		form = CreateUserForm()
+		if request.method == 'POST':
+			form = CreateUserForm(request.POST)
+			if form.is_valid():
+				form.save()
+				user = form.cleaned_data.get('username')
+				messages.success(request,"Account was created for "+ user)
+				return redirect('login')
+
+		context = {'form':form}
+		return render(request,'register.html',context)
+
+def LoginPage(request):
+	if request.user.is_authenticated:
+		return redirect('home')
+	else:
+
+		if request.method == 'POST':
+			username = request.POST.get('username')
+			password = request.POST.get('password')
+			user = authenticate(request,username=username,password=password)
+			if user is not None:
+				login(request,user)
+				return redirect('home')
+			else:
+				messages.info(request,'Username or password is incorrect')
+		context = {}
+		return render(request,'login.html',context)
+
+#logout page
+def LogOutPage(request):
+	logout(request)
+	return redirect('login')
 
 def sign_up(request):
   error_message= ''
@@ -47,13 +83,9 @@ def loginPage(request):
     context = {}
     return render(request, 'registration/login.html', context)
 
-def about(request):
-    return render(request, 'about.html')
 
-def contact(request):
-    return render(request, 'contact.html')
-
-def Home(request):
+@login_required(login_url='login')
+def HomePageView(request):
   # taking the latest profile object
 	calories = Profile.objects.filter(person_of=request.user).last()
 	calorie_goal = calories.calorie_goal
@@ -89,9 +121,6 @@ def Home(request):
 # Foods
 @login_required
 def add_food(request):
-	
-
-
     #for showing all food items available
 	food_items = Food.objects.filter(person_of=request.user)
 	form = AddFoodForm(request.POST) 
@@ -110,7 +139,7 @@ def add_food(request):
 	context = {'form':form,'food_items':food_items,'myFilter':myFilter}
 	return render(request,'add_food.html',context)
  # make sure foods is the same name as the folder
-# Foods
+	
 
 def select_food(request):
 	person = Profile.objects.filter(person_of=request.user).last()
@@ -152,8 +181,8 @@ def ProfilePage(request):
 	return render(request, 'profile.html',context)
 
 
-
 def update_food(request,pk):
+
 	food_items = Food.objects.filter(person_of=request.user)
 
 	food_item = Food.objects.get(id=pk)
@@ -180,10 +209,8 @@ def delete_food(request,pk):
 
 
 def resources(request):
-
-
-
     return render(request, 'resources.html')
+
 
 def shop(request):
     return render(request, 'shop.html')
@@ -194,3 +221,6 @@ def shop(request):
 # 3) Create functions for html files
 # 4) make the html page for our functions
 # 5) after creating the function add to the urls.py in the main_app 
+
+
+
