@@ -1,20 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import date
-from django.urls import reverse
 
+from datetime import date
 
 # Create your models here.
-# This model is made for storing all the food items that the user wants in 
-# their profile. Each user is connected so that users can have food inventory of their own choice.
+
 
 class Food(models.Model):
 	name = models.CharField(max_length=200 ,null=False)
 	quantity = models.PositiveIntegerField(null=False,default=0)
 	calorie = models.FloatField(null=False,default=0)
 	person_of = models.ForeignKey(User,null=True,on_delete=models.CASCADE)
-	#association with user. if you delete the user it will delete the foods associated with it
-	# user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return self.name
@@ -22,13 +18,13 @@ class Food(models.Model):
 
 class Profile(models.Model):
 	person_of = models.ForeignKey(User,null=True,on_delete=models.CASCADE)
-	calorie_count = models.FloatField(default=0,null=True,blank=True) # counting calories for each day
-	food_selected = models.ForeignKey(Food,on_delete=models.CASCADE,null=True,blank=True) # food the user selects for consuming
+	calorie_count = models.FloatField(default=0,null=True,blank=True)
+	food_selected = models.ForeignKey(Food,on_delete=models.CASCADE,null=True,blank=True)
 	quantity = models.FloatField(default=0)
 	total_calorie = models.FloatField(default=0,null=True)
 	date = models.DateField(auto_now_add = True)
-	calorie_goal = models.PositiveIntegerField(default=0) # setting a goal for calorie consumption for each day
-	all_food_selected_today = models.ManyToManyField(Food,through='PostFood',related_name='inventory') # stores all the food selected in a day
+	calorie_goal = models.PositiveIntegerField(default=0)
+	all_food_selected_today = models.ManyToManyField(Food,through='PostFood',related_name='inventory')
 
 	
 
@@ -52,7 +48,7 @@ class Profile(models.Model):
 		return str(self.person_of.username)
 
 
-class PostFood(models.Model): # This model is used for a through connection with the
+class PostFood(models.Model):
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
     food = models.ForeignKey(Food,on_delete=models.CASCADE)
     calorie_amount = models.FloatField(default=0,null=True,blank=True)
