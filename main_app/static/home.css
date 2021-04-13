@@ -47,7 +47,7 @@ body {
     font-family: "Poppins", sans-serif;
     -webkit-text-stroke-width: .7px;
     -webkit-text-stroke-color: black;
-    text-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
+    text-shadow: 3px 3px 5px rgb(214, 205, 205);
 }
 
 #all-food {
@@ -66,6 +66,7 @@ body {
 .btn {
     text-transform: uppercase;
     box-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
+    display:inline-block;
 }
 
 .addfood {
@@ -74,7 +75,7 @@ body {
     line-height: 56px;
     color: #cda45e;
     font-family: "Poppins", sans-serif;
-    text-shadow: 3px 3px 5px rgba(214, 205, 205);
+    text-shadow: 3px 3px 5px rgb(214, 205, 205);
     -webkit-text-stroke-width: .7px;
     -webkit-text-stroke-color: black;
 
@@ -108,7 +109,7 @@ body {
     line-height: 56px;
     color: #cda45e;
     font-family: "Poppins", sans-serif;
-    text-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
+    text-shadow: 3px 3px 5px rgb(214, 205, 205);
     -webkit-text-stroke-width: .7px;
     -webkit-text-stroke-color: black;
     text-align: center;
@@ -119,7 +120,7 @@ body {
     line-height: 56px;
     color: white;
     font-family: "Poppins", sans-serif;
-    text-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
+    text-shadow: 3px 3px 5px rgb(214, 205, 205);
     -webkit-text-stroke-width: .7px;
     -webkit-text-stroke-color: black;
     text-align: center;
@@ -137,6 +138,7 @@ body {
     border-left: solid;
     border-color: white;
     border-width: thin;
+    text-align: center;
 
 }
 
@@ -169,7 +171,7 @@ body {
     font-family: "Poppins", sans-serif;
     -webkit-text-stroke-width: .7px;
     -webkit-text-stroke-color: black;
-    text-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
+    text-shadow: 3px 3px 5px rgb(214, 205, 205);
     text-align: center;
 }
 
@@ -184,7 +186,7 @@ body {
     font-family: "Poppins", sans-serif;
     -webkit-text-stroke-width: .7px;
     -webkit-text-stroke-color: black;
-    text-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
+    text-shadow: 3px 3px 5px rgb(214, 205, 205);
 
 }
 .cal-today-num {
@@ -193,9 +195,8 @@ body {
     line-height: 56px;
     color: white;
     font-family: "Poppins", sans-serif;
-    text-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
+    text-shadow: 3px 3px 5px rgb(214, 205, 205);
     -webkit-text-stroke-width: .7px;
     -webkit-text-stroke-color: black;
     text-align: center;
 }
-
