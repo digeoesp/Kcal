@@ -158,7 +158,7 @@ body {
 }
 .profgoal {
     background-color: rgba(0, 0, 0, 0.6);
-    height: 160px;
+    height: 150px;
     box-shadow: 8px 8px 8px gray;
     border-top: solid;
     border-bottom: solid;
@@ -166,9 +166,18 @@ body {
     border-left: solid;
     border-color: white;
     border-width: thin;
-
-
 }
+
+#home-table{
+    margin: auto;
+    width: 58%;
+    
+}
+    
+    
+    
+
+
 .selectsearch {
     margin: 0;
     font-size: 26px;
