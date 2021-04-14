@@ -66,8 +66,15 @@ body {
 .btn {
     text-transform: uppercase;
     box-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
-    display:inline-block;
 }
+
+.btn-select {
+    text-transform: uppercase;
+    box-shadow: 3px 3px 5px rgba(214, 205, 205, 0.481);
+    display: flex;
+    justify-content: space-around;
+}
+
 
 .addfood {
     font-size: 50px;
@@ -172,7 +179,11 @@ body {
     -webkit-text-stroke-width: .7px;
     -webkit-text-stroke-color: black;
     text-shadow: 3px 3px 5px rgb(214, 205, 205);
-    text-align: center;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 .calorie-today {

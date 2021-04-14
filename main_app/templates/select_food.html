@@ -6,12 +6,11 @@
         <div class="app-title">
             <h1 class="username">Select Food</h1>
         </div>
-        <div class="selectsearch">
-            <form method="POST" action="" class="login-form">
+        <div >
+            <form method="POST" action="" class="selectsearch">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <input class="btn btn-sm btn-info" type="submit" value="select">
-
             </form>
         </div>
     </div>
