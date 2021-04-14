@@ -38,7 +38,7 @@
     {% elif calorie_goal == 0 %}
     <a href="{% url "profile" %}"> Enter your calorie goal for the day </a>
     {% else %}
-    You surpassed your goal by {{ over_calorie }} calories
+    <h1 id="youNeed">You surpassed your goal by <span id="calories">{{ over_calorie }}</span> calories</h1>  
     {% endif %}
     </p>
     <br>

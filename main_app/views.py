@@ -174,7 +174,7 @@ def ProfilePage(request):
 		form = ProfileForm(request.POST,instance=person)
 		if form.is_valid():	
 			form.save()
-			return redirect('profile')
+			return redirect('home')
 	else:
 		form = ProfileForm(instance=person)
 
